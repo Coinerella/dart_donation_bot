@@ -1,0 +1,12 @@
+# Files and directories created by pub.
+.dart_tool/
+.packages
+
+# Conventional directory for build output.
+build/
+hive/storage.hive
+hive/storage.lock
+.DS_Store
+.vscode
+dart_donation_bot
+ecosystem.config.js
