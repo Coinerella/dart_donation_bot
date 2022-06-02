@@ -1,0 +1,7 @@
+version: '3.1'
+services:
+  dart_donation_bot:
+    image: 'dart_donation_bot'
+    environment: 
+      - DISCORD_TOKEN=""
+    restart: always
