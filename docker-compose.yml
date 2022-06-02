@@ -5,3 +5,5 @@ services:
     environment: 
       - DISCORD_TOKEN=""
     restart: always
+
+#TODO: Needs mount / volume to persist hive
