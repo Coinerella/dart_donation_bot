@@ -8,7 +8,11 @@ services:
     volumes:
       - ./hive:/app/hive
     environment: 
-      - DISCORD_TOKEN=""
+      - DISCORD_API_TOKEN=""
+      - DISCORD_CHANNEL_ID=""
+      - DONATION_SCRIPT_HASH=""
+      - DONATION_ADDRESS=""
+      - ELECTRUM_SERVER_URL=""
       - SILENT_OPERATION=false
     restart: always
     logging:

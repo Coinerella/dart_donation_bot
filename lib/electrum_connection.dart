@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'package:color_logger/color_logger.dart';
 import 'package:hive/hive.dart';
@@ -11,11 +12,11 @@ WebSocketChannel? connection;
 Timer? pingTimer;
 Timer? reconnectTimer;
 late Box hiveBox;
+Map<String, String> env = Platform.environment;
 
-const donationScriptHash =
-    "f83cf3b3ccddc19323fccef53417926f3303070abf4c6492164d2b0f513ad4e6";
-const donationAddress = "p92W3t7YkKfQEPDb7cG9jQ6iMh7cpKLvwK";
-const serverUrl = "wss://allingas.peercoinexplorer.net:50004";
+final donationScriptHash = env['DONATION_SCRIPT_HASH'];
+final donationAddress = env['DONATION_ADDRESS'];
+final serverUrl = env['ELECTRUM_SERVER_URL']!;
 
 var console = ColorLogger();
 

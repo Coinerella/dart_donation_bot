@@ -4,7 +4,8 @@ import 'dart:math';
 import 'package:nyxx/nyxx.dart';
 
 late INyxxWebsocket bot;
-const generalChannelId = '390501055588335617';
+Map<String, String> env = Platform.environment;
+final channelId = env['DISCORD_CHANNEL_ID'];
 
 void init(String discordToken) async {
   bot = NyxxFactory.createNyxxWebsocket(
@@ -38,10 +39,10 @@ void sendMintMessage(double amount) {
 }
 
 void sendMessage(String text) {
-  if (Platform.environment['SILENT_OPERATION'] == "true") return;
+  if (env['SILENT_OPERATION'] == "true") return;
 
   bot.httpEndpoints.sendMessage(
-    Snowflake(generalChannelId),
+    Snowflake(channelId),
     MessageBuilder.content(
       text,
     ),
