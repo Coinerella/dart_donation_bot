@@ -1,9 +1,17 @@
 version: '3.1'
 services:
   dart_donation_bot:
-    image: 'dart_donation_bot'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dart_donation_bot
+    volumes:
+      - ./hive:/app/hive
     environment: 
       - DISCORD_TOKEN=""
+      - SILENT_OPERATION=false
     restart: always
-
-#TODO: Needs mount / volume to persist hive
+    logging:
+      driver: "json-file"
+      options:
+        max-size: 100m

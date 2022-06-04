@@ -1,8 +1,9 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:nyxx/nyxx.dart';
 
-INyxxWebsocket? bot;
+late INyxxWebsocket bot;
 const generalChannelId = '390501055588335617';
 
 void init(String discordToken) async {
@@ -13,7 +14,7 @@ void init(String discordToken) async {
     ..registerPlugin(IgnoreExceptions())
     ..connect();
 
-  bot!.eventsWs.onReady.listen(
+  bot.eventsWs.onReady.listen(
     (e) async {
       print("Ready!");
     },
@@ -37,12 +38,12 @@ void sendMintMessage(double amount) {
 }
 
 void sendMessage(String text) {
-  bot!.httpEndpoints.sendMessage(
+  if (Platform.environment['SILENT_OPERATION'] == "true") return;
+
+  bot.httpEndpoints.sendMessage(
     Snowflake(generalChannelId),
     MessageBuilder.content(
       text,
     ),
   );
 }
-
-//TODO monitor reconnect / retry

@@ -9,7 +9,7 @@ void main(List<String> arguments) async {
   Map<String, String> env = Platform.environment;
 
   if (env.containsKey("DISCORD_TOKEN")) {
-    Hive.init('${Directory.current.path}/hive');
+    Hive.init('/app/hive/');
     await connection.connect();
     discord.init(env["DISCORD_TOKEN"]!);
   } else {

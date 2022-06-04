@@ -10,3 +10,4 @@ hive/storage.lock
 .vscode
 dart_donation_bot
 ecosystem.config.js
+docker-compose.override.yml
