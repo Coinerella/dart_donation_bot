@@ -1,4 +1,4 @@
-A simple bot that will monitor a Peercoin address for incoming tx / donations and mint events.  
+A simple bot that will monitor a Peercoin address for incoming tx / donations and mint events by connecting to a Electrum server.  
 This bot will report those events to a given Discord Channel.  
 Transactions are persisted locally in a Hive database.
 
