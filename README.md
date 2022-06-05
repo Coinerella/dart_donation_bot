@@ -9,7 +9,7 @@ This bot **should** also work fine with all Bitcoin and Peercoin clones. Incomin
 - docker-compose
 - Electrumx server running wss (Websocket) service
 - Discord API Token
-- Electrum scripthash of the donation address (you may use [dart_scripthash_generator](https://github.com/willyfromtheblock/dart_scripthash_generator "dart_scripthash_generator") or [dart_scripthash_server](http:https://github.com/willyfromtheblock/dart_scripthash_server "dart_scripthash_server"))
+- Electrum scripthash of the donation address (you may use [dart_scripthash_generator](https://github.com/Coinerella/dart_scripthash_generator "dart_scripthash_generator") or [dart_scripthash_server](https://github.com/Coinerella/dart_scripthash_server "dart_scripthash_server"))
 
 ### Get started
 1. Clone this repo.
