@@ -9,4 +9,4 @@ environment:
 dev_dependencies:
   lints: ^2.0.0
   test: ^1.16.0
-dependencies: {color_logger: ^1.0.2, hive: ^2.2.1, nyxx: ^3.4.2, web_socket_channel: ^2.2.0}
+dependencies: {color_logger: ^1.0.2, hive: ^2.2.1, nyxx: ^4.0.0, web_socket_channel: ^2.2.0}
