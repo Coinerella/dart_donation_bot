@@ -201,7 +201,7 @@ void handleTx(String id, Map tx) async {
       tx["vout"].forEach(
         (e) {
           if (e["scriptPubKey"]["type"] == "scripthash" &&
-              e["scriptPubKey"]["addresses"].contains(donationAddress)) {
+              e["scriptPubKey"]["address"].contains(donationAddress)) {
             if (txPosIdentical == true) {
               console.log(
                   'found donationAddress in VOUTs of a tx where we know one of the VINs == change');
@@ -218,7 +218,7 @@ void handleTx(String id, Map tx) async {
   tx["vout"].forEach(
     (e) {
       if (e["scriptPubKey"]["type"] == "scripthash" &&
-          e["scriptPubKey"]["addresses"].contains(donationAddress)) {
+          e["scriptPubKey"]["address"].contains(donationAddress)) {
         outValue += e["value"];
       }
     },
