@@ -1,5 +1,5 @@
 # dart_donation_bot
-A simple bot that will monitor a Peercoin address for incoming Transactions (Donations) and mint events by connecting to a **Electrum** server.  
+A simple bot that will monitor a Peercoin address for incoming Transactions (Donations) and mint events by connecting to a **Marisma** server.  
 This bot will report those events to a given Discord channel.  
 Transactions are persisted locally in a Hive database.
 
@@ -7,9 +7,8 @@ This bot **should** also work fine with all Bitcoin and Peercoin clones. Incomin
 
 ### Prerequisites
 - docker-compose
-- Electrumx server running wss (Websocket) service
+- Marisma
 - Discord API Token
-- Electrum scripthash of the donation address (you may use [dart_scripthash_generator](https://github.com/Coinerella/dart_scripthash_generator "dart_scripthash_generator") or [dart_scripthash_server](https://github.com/Coinerella/dart_scripthash_server "dart_scripthash_server"))
 
 ### Get started
 1. Clone this repo.

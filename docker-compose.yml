@@ -10,9 +10,9 @@ services:
     environment: 
       - DISCORD_API_TOKEN=""
       - DISCORD_CHANNEL_ID=""
-      - DONATION_SCRIPT_HASH=""
       - DONATION_ADDRESS=""
-      - ELECTRUM_SERVER_URL=""
+      - MARISMA_SERVER_HOST=""
+      - MARISMA_SERVER_PORT=""
       - SILENT_OPERATION=false
     restart: always
     logging:

@@ -9,7 +9,9 @@ final channelId = env['DISCORD_CHANNEL_ID'];
 
 void init(String discordToken) async {
   bot = NyxxFactory.createNyxxWebsocket(
-      discordToken, GatewayIntents.allUnprivileged)
+    discordToken,
+    GatewayIntents.allUnprivileged,
+  )
     ..registerPlugin(Logging())
     ..registerPlugin(CliIntegration())
     ..registerPlugin(IgnoreExceptions())

@@ -1,0 +1,123 @@
+syntax = "proto3";
+package marisma;
+
+service Marisma {
+  rpc GetBlockHeight (BlockHeightRequest) returns (BlockHeightReply) {}
+  rpc GetAdressBalance (AddressRequest) returns (AddressBalanceReply) {}
+  rpc GetAddressUtxoList (AddressListRequest) returns (AddressUtxoListReply) {}
+  rpc GetAddressHasUtxos (AddressRequest) returns (AddressHasUtxosReply) {}
+  rpc GetAddressIsKnown (AddressRequest) returns (AddressIsKnownReply) {}
+  rpc GetAddressNumberOfUtxos (AddressRequest) returns (AddressNumberOfUtxosReply) {}
+  rpc GetAddressUtxoHistoryList (AddressListRequest) returns (AddressUtxoHistoryReply) {}
+  rpc GetTransaction (TxRequest) returns (TxReply) {}
+  rpc GetEstimateFeePerKb (EstimateFeeRequest) returns (EstimateFeeReply) {}
+  rpc BroadCastTransaction (BroadCastTransactionRequest) returns (BroadCastTransactionReply) {}
+  rpc BlockHashStream(BlockHashStreamRequest) returns (stream BlockHashStreamReply) {} //server side streaming
+  rpc AddressStatusStream(stream AddressRequest) returns (stream AddressStatusStreamReply) {}  //bi-directional streaming
+  rpc AddressScanStream(stream AddressRequest) returns (stream AddressScanStreamReply) {}  //bi-directional streaming
+  rpc AddressUtxosStream(stream AddressListRequest) returns (stream AddressUtxosStreamReply) {}  //bi-directional streaming
+}
+
+message BlockHeightRequest {
+}
+
+message BlockHeightReply {
+  uint32 height = 1;
+  optional string rpc_error = 2;
+}
+
+message EstimateFeeRequest {
+  //Return the estimated transaction fee per kilobyte for a transaction to be confirmed within a certain number of blocks.
+  uint32 blockTarget = 1;
+}
+
+message EstimateFeeReply {
+  uint64 feePerKb = 1;
+  optional string rpc_error = 2;
+}
+
+message BroadCastTransactionRequest {
+  string hex = 1;
+}
+
+message BroadCastTransactionReply {
+  string txid = 1;
+  optional string rpc_error = 2;
+}
+
+message AddressRequest {
+  string address = 1;
+}
+
+message AddressListRequest {
+  string address = 1;
+  optional uint32 minimum_height = 2;
+  optional bool ascending = 3;
+}
+
+message AddressBalanceReply {
+  uint64 confirmed = 1;
+  uint64 unconfirmed = 2;
+  optional string rpc_error = 3;
+}
+
+message AddressUtxoListReply {
+  repeated string utxos = 1;
+  optional string rpc_error = 2;
+}
+
+message AddressUtxoHistoryReply {
+  repeated string history = 1;
+  optional string rpc_error = 2;
+}
+
+message AddressHasUtxosReply {
+  bool has_utxos = 1;
+  optional string rpc_error = 2;
+}
+
+message AddressNumberOfUtxosReply {
+  uint32 n = 1;
+  optional string rpc_error = 2;
+}
+
+message AddressIsKnownReply {
+  bool is_known = 1;
+  optional string rpc_error = 2;
+}
+
+message TxRequest {
+  string txid = 1;
+}
+
+message TxReply {
+  string tx = 1;
+  optional string rpc_error = 2;
+}
+
+message BlockHashStreamRequest {
+}
+
+message BlockHashStreamReply {
+  string hash = 1;
+  uint32 height = 2;
+  optional string rpc_error = 3;
+}
+
+message AddressStatusStreamReply {
+  string address = 1;
+  string status = 2;
+  optional string rpc_error = 3;
+}
+
+message AddressScanStreamReply {
+  string address = 1;
+  bool is_known = 2;
+  optional string rpc_error = 3;
+}
+
+message AddressUtxosStreamReply {
+  string address = 1;
+  repeated string utxos = 2;
+  optional string rpc_error = 3;
+}
