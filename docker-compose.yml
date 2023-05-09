@@ -13,6 +13,7 @@ services:
       - DONATION_ADDRESS=""
       - MARISMA_SERVER_HOST=""
       - MARISMA_SERVER_PORT=""
+      - USE_SSL=true
       - SILENT_OPERATION=false
     restart: always
     logging:

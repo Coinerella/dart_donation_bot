@@ -20,15 +20,15 @@ late Box _hiveBox;
 
 Future<void> connect() async {
   console.log('connecting');
-  final localTesting = _env["LOCAL_TESTING"] == "true";
+  final useSSL = _env["USE_SSL"] == "true";
   _marisma = MarismaClient(
     ClientChannel(
       _env["MARISMA_SERVER_HOST"]!,
       port: int.parse(_env["MARISMA_SERVER_PORT"]!),
       options: ChannelOptions(
-        credentials: localTesting
-            ? ChannelCredentials.insecure()
-            : ChannelCredentials.secure(),
+        credentials: useSSL
+            ? ChannelCredentials.secure()
+            : ChannelCredentials.insecure(),
       ),
     ),
   );
