@@ -40,26 +40,56 @@ Future<void> connect() async {
   subscribeToDonationAddress();
 }
 
-void subscribeToDonationAddress([bool retry = false]) {
+void subscribeToDonationAddress({bool retry = false}) async {
+  console.log('connecting to stream (retry: $retry)');
+
+  if (retry == true) {
+    await Future.delayed(Duration(seconds: 5));
+  }
+
   final addressStatusStream = StreamController<AddressRequest>();
+  StreamSubscription<dynamic>? subscription; // Declare a subscription variable
 
-  //listen to marisma stream
-  _marisma.addressStatusStream(addressStatusStream.stream).listen(
-        (_) async {
-          await handleUtxos(
-            await _marisma.getAddressUtxoList(
-              AddressListRequest()..address = donationAddress,
-            ),
+  void handleStreamData(dynamic _) async {
+    await handleUtxos(
+      await _marisma.getAddressUtxoList(
+        AddressListRequest()..address = donationAddress,
+      ),
+    );
+  }
+
+  void handleStreamError(dynamic e) {
+    console.log(
+      e.toString(),
+      status: LogStatus.error,
+    );
+    // Reconnect by canceling the current subscription and creating a new one
+    subscription?.cancel();
+    subscription = null;
+    subscribeToDonationAddress(retry: true);
+  }
+
+  void handleStreamDone() {
+    console.log(
+      'stream done',
+      status: LogStatus.info,
+    );
+    // Reconnect by canceling the current subscription and creating a new one
+    subscription?.cancel();
+    subscription = null;
+    subscribeToDonationAddress(retry: true);
+  }
+
+  // Listen to marisma stream
+  subscription =
+      _marisma.addressStatusStream(addressStatusStream.stream).listen(
+            handleStreamData,
+            onError: handleStreamError,
+            onDone: handleStreamDone,
           );
-        },
-        onError: (e) =>
-            console.log(e.toString(), status: LogStatus.error), //TODO
-        onDone: () async {
-          //TODO: handle reconnect
-        },
-      );
 
-  //add address to stream
+  console.log('connected to stream');
+  // Add address to stream
   addressStatusStream.sink.add(AddressRequest()..address = donationAddress);
 }
 
