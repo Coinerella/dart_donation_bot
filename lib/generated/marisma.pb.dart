@@ -10,33 +10,33 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class BlockHeightRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BlockHeightRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'marisma'), createEmptyInstance: create)
+class EmptyRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EmptyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'marisma'), createEmptyInstance: create)
     ..hasRequiredFields = false
   ;
 
-  BlockHeightRequest._() : super();
-  factory BlockHeightRequest() => create();
-  factory BlockHeightRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory BlockHeightRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  EmptyRequest._() : super();
+  factory EmptyRequest() => create();
+  factory EmptyRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory EmptyRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  BlockHeightRequest clone() => BlockHeightRequest()..mergeFromMessage(this);
+  EmptyRequest clone() => EmptyRequest()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BlockHeightRequest copyWith(void Function(BlockHeightRequest) updates) => super.copyWith((message) => updates(message as BlockHeightRequest)) as BlockHeightRequest; // ignore: deprecated_member_use
+  EmptyRequest copyWith(void Function(EmptyRequest) updates) => super.copyWith((message) => updates(message as EmptyRequest)) as EmptyRequest; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static BlockHeightRequest create() => BlockHeightRequest._();
-  BlockHeightRequest createEmptyInstance() => create();
-  static $pb.PbList<BlockHeightRequest> createRepeated() => $pb.PbList<BlockHeightRequest>();
+  static EmptyRequest create() => EmptyRequest._();
+  EmptyRequest createEmptyInstance() => create();
+  static $pb.PbList<EmptyRequest> createRepeated() => $pb.PbList<EmptyRequest>();
   @$core.pragma('dart2js:noInline')
-  static BlockHeightRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BlockHeightRequest>(create);
-  static BlockHeightRequest? _defaultInstance;
+  static EmptyRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EmptyRequest>(create);
+  static EmptyRequest? _defaultInstance;
 }
 
 class BlockHeightReply extends $pb.GeneratedMessage {
@@ -948,6 +948,7 @@ class BlockHashStreamReply extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'height', $pb.PbFieldType.OU3)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rpcError')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pong')
     ..hasRequiredFields = false
   ;
 
@@ -956,6 +957,7 @@ class BlockHashStreamReply extends $pb.GeneratedMessage {
     $core.String? hash,
     $core.int? height,
     $core.String? rpcError,
+    $core.String? pong,
   }) {
     final _result = create();
     if (hash != null) {
@@ -966,6 +968,9 @@ class BlockHashStreamReply extends $pb.GeneratedMessage {
     }
     if (rpcError != null) {
       _result.rpcError = rpcError;
+    }
+    if (pong != null) {
+      _result.pong = pong;
     }
     return _result;
   }
@@ -1016,6 +1021,15 @@ class BlockHashStreamReply extends $pb.GeneratedMessage {
   $core.bool hasRpcError() => $_has(2);
   @$pb.TagNumber(3)
   void clearRpcError() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get pong => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set pong($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPong() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPong() => clearField(4);
 }
 
 class AddressStatusStreamReply extends $pb.GeneratedMessage {
@@ -1023,6 +1037,7 @@ class AddressStatusStreamReply extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rpcError')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pong')
     ..hasRequiredFields = false
   ;
 
@@ -1031,6 +1046,7 @@ class AddressStatusStreamReply extends $pb.GeneratedMessage {
     $core.String? address,
     $core.String? status,
     $core.String? rpcError,
+    $core.String? pong,
   }) {
     final _result = create();
     if (address != null) {
@@ -1041,6 +1057,9 @@ class AddressStatusStreamReply extends $pb.GeneratedMessage {
     }
     if (rpcError != null) {
       _result.rpcError = rpcError;
+    }
+    if (pong != null) {
+      _result.pong = pong;
     }
     return _result;
   }
@@ -1091,6 +1110,15 @@ class AddressStatusStreamReply extends $pb.GeneratedMessage {
   $core.bool hasRpcError() => $_has(2);
   @$pb.TagNumber(3)
   void clearRpcError() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get pong => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set pong($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPong() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPong() => clearField(4);
 }
 
 class AddressScanStreamReply extends $pb.GeneratedMessage {

@@ -15,9 +15,9 @@ export 'marisma.pb.dart';
 
 class MarismaClient extends $grpc.Client {
   static final _$getBlockHeight =
-      $grpc.ClientMethod<$0.BlockHeightRequest, $0.BlockHeightReply>(
+      $grpc.ClientMethod<$0.EmptyRequest, $0.BlockHeightReply>(
           '/marisma.Marisma/GetBlockHeight',
-          ($0.BlockHeightRequest value) => value.writeToBuffer(),
+          ($0.EmptyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.BlockHeightReply.fromBuffer(value));
   static final _$getAdressBalance =
@@ -103,7 +103,7 @@ class MarismaClient extends $grpc.Client {
       : super(channel, options: options, interceptors: interceptors);
 
   $grpc.ResponseFuture<$0.BlockHeightReply> getBlockHeight(
-      $0.BlockHeightRequest request,
+      $0.EmptyRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$getBlockHeight, request, options: options);
   }
@@ -196,13 +196,12 @@ abstract class MarismaServiceBase extends $grpc.Service {
   $core.String get $name => 'marisma.Marisma';
 
   MarismaServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.BlockHeightRequest, $0.BlockHeightReply>(
+    $addMethod($grpc.ServiceMethod<$0.EmptyRequest, $0.BlockHeightReply>(
         'GetBlockHeight',
         getBlockHeight_Pre,
         false,
         false,
-        ($core.List<$core.int> value) =>
-            $0.BlockHeightRequest.fromBuffer(value),
+        ($core.List<$core.int> value) => $0.EmptyRequest.fromBuffer(value),
         ($0.BlockHeightReply value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.AddressRequest, $0.AddressBalanceReply>(
         'GetAdressBalance',
@@ -314,8 +313,8 @@ abstract class MarismaServiceBase extends $grpc.Service {
             ($0.AddressUtxosStreamReply value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.BlockHeightReply> getBlockHeight_Pre($grpc.ServiceCall call,
-      $async.Future<$0.BlockHeightRequest> request) async {
+  $async.Future<$0.BlockHeightReply> getBlockHeight_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.EmptyRequest> request) async {
     return getBlockHeight(call, await request);
   }
 
@@ -375,7 +374,7 @@ abstract class MarismaServiceBase extends $grpc.Service {
   }
 
   $async.Future<$0.BlockHeightReply> getBlockHeight(
-      $grpc.ServiceCall call, $0.BlockHeightRequest request);
+      $grpc.ServiceCall call, $0.EmptyRequest request);
   $async.Future<$0.AddressBalanceReply> getAdressBalance(
       $grpc.ServiceCall call, $0.AddressRequest request);
   $async.Future<$0.AddressUtxoListReply> getAddressUtxoList(

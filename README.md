@@ -5,15 +5,19 @@ Transactions are persisted locally in a Hive database.
 
 This bot **should** also work fine with all Bitcoin and Peercoin clones. Incoming Transactions from mining are so far not considered.
 
-### Prerequisites
+## Prerequisites
 - docker-compose
 - Marisma
 - Discord API Token
 
-### Get started
+## Get started
 1. Clone this repo.
 2. Create a *docker-compose.override.yml* file and set the environment variables accordingly.  
 When starting for the first time, setting **SILENT_OPERATION=true** is recommended to avoid spam on initial build of the database.
 3. run *./deploy.sh*
 4. ??? 
 5. You now have a donation bot. 
+
+## Development
+### Generate proto files with  
+`protoc --dart_out=grpc:lib/generated -Iprotos protos/marisma.proto`

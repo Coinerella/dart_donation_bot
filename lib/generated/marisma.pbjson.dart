@@ -8,13 +8,13 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use blockHeightRequestDescriptor instead')
-const BlockHeightRequest$json = const {
-  '1': 'BlockHeightRequest',
+@$core.Deprecated('Use emptyRequestDescriptor instead')
+const EmptyRequest$json = const {
+  '1': 'EmptyRequest',
 };
 
-/// Descriptor for `BlockHeightRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List blockHeightRequestDescriptor = $convert.base64Decode('ChJCbG9ja0hlaWdodFJlcXVlc3Q=');
+/// Descriptor for `EmptyRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List emptyRequestDescriptor = $convert.base64Decode('CgxFbXB0eVJlcXVlc3Q=');
 @$core.Deprecated('Use blockHeightReplyDescriptor instead')
 const BlockHeightReply$json = const {
   '1': 'BlockHeightReply',
@@ -226,14 +226,16 @@ const BlockHashStreamReply$json = const {
     const {'1': 'hash', '3': 1, '4': 1, '5': 9, '10': 'hash'},
     const {'1': 'height', '3': 2, '4': 1, '5': 13, '10': 'height'},
     const {'1': 'rpc_error', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'rpcError', '17': true},
+    const {'1': 'pong', '3': 4, '4': 1, '5': 9, '9': 1, '10': 'pong', '17': true},
   ],
   '8': const [
     const {'1': '_rpc_error'},
+    const {'1': '_pong'},
   ],
 };
 
 /// Descriptor for `BlockHashStreamReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List blockHashStreamReplyDescriptor = $convert.base64Decode('ChRCbG9ja0hhc2hTdHJlYW1SZXBseRISCgRoYXNoGAEgASgJUgRoYXNoEhYKBmhlaWdodBgCIAEoDVIGaGVpZ2h0EiAKCXJwY19lcnJvchgDIAEoCUgAUghycGNFcnJvcogBAUIMCgpfcnBjX2Vycm9y');
+final $typed_data.Uint8List blockHashStreamReplyDescriptor = $convert.base64Decode('ChRCbG9ja0hhc2hTdHJlYW1SZXBseRISCgRoYXNoGAEgASgJUgRoYXNoEhYKBmhlaWdodBgCIAEoDVIGaGVpZ2h0EiAKCXJwY19lcnJvchgDIAEoCUgAUghycGNFcnJvcogBARIXCgRwb25nGAQgASgJSAFSBHBvbmeIAQFCDAoKX3JwY19lcnJvckIHCgVfcG9uZw==');
 @$core.Deprecated('Use addressStatusStreamReplyDescriptor instead')
 const AddressStatusStreamReply$json = const {
   '1': 'AddressStatusStreamReply',
@@ -241,14 +243,16 @@ const AddressStatusStreamReply$json = const {
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
     const {'1': 'status', '3': 2, '4': 1, '5': 9, '10': 'status'},
     const {'1': 'rpc_error', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'rpcError', '17': true},
+    const {'1': 'pong', '3': 4, '4': 1, '5': 9, '9': 1, '10': 'pong', '17': true},
   ],
   '8': const [
     const {'1': '_rpc_error'},
+    const {'1': '_pong'},
   ],
 };
 
 /// Descriptor for `AddressStatusStreamReply`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addressStatusStreamReplyDescriptor = $convert.base64Decode('ChhBZGRyZXNzU3RhdHVzU3RyZWFtUmVwbHkSGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIWCgZzdGF0dXMYAiABKAlSBnN0YXR1cxIgCglycGNfZXJyb3IYAyABKAlIAFIIcnBjRXJyb3KIAQFCDAoKX3JwY19lcnJvcg==');
+final $typed_data.Uint8List addressStatusStreamReplyDescriptor = $convert.base64Decode('ChhBZGRyZXNzU3RhdHVzU3RyZWFtUmVwbHkSGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIWCgZzdGF0dXMYAiABKAlSBnN0YXR1cxIgCglycGNfZXJyb3IYAyABKAlIAFIIcnBjRXJyb3KIAQESFwoEcG9uZxgEIAEoCUgBUgRwb25niAEBQgwKCl9ycGNfZXJyb3JCBwoFX3Bvbmc=');
 @$core.Deprecated('Use addressScanStreamReplyDescriptor instead')
 const AddressScanStreamReply$json = const {
   '1': 'AddressScanStreamReply',
