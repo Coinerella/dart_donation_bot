@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:dart_donation_bot/marisma_connection.dart' as connection;
 import 'package:dart_donation_bot/discord.dart' as discord;
+import 'package:dart_donation_bot/marisma_connection.dart';
 import 'package:hive/hive.dart';
 
 void main(List<String> arguments) async {
@@ -26,6 +26,10 @@ void main(List<String> arguments) async {
   Hive.init(
     env["LOCAL_TESTING"] == "true" ? 'hive' : '/app/hive/',
   );
-  await connection.connect();
+
+  //open MarismaConnection
+  MarismaConnection();
+
+  //init discord
   discord.init(env["DISCORD_API_TOKEN"]!);
 }

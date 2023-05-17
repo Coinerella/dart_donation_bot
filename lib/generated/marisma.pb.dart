@@ -319,16 +319,21 @@ class BroadCastTransactionReply extends $pb.GeneratedMessage {
 class AddressRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddressRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'marisma'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ping')
     ..hasRequiredFields = false
   ;
 
   AddressRequest._() : super();
   factory AddressRequest({
     $core.String? address,
+    $core.String? ping,
   }) {
     final _result = create();
     if (address != null) {
       _result.address = address;
+    }
+    if (ping != null) {
+      _result.ping = ping;
     }
     return _result;
   }
@@ -361,6 +366,15 @@ class AddressRequest extends $pb.GeneratedMessage {
   $core.bool hasAddress() => $_has(0);
   @$pb.TagNumber(1)
   void clearAddress() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get ping => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set ping($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasPing() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPing() => clearField(2);
 }
 
 class AddressListRequest extends $pb.GeneratedMessage {

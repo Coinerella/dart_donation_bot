@@ -47,6 +47,7 @@ message BroadCastTransactionReply {
 
 message AddressRequest {
   string address = 1;
+  optional string ping = 2;
 }
 
 message AddressListRequest {

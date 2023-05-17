@@ -82,11 +82,15 @@ const AddressRequest$json = const {
   '1': 'AddressRequest',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'ping', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'ping', '17': true},
+  ],
+  '8': const [
+    const {'1': '_ping'},
   ],
 };
 
 /// Descriptor for `AddressRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addressRequestDescriptor = $convert.base64Decode('Cg5BZGRyZXNzUmVxdWVzdBIYCgdhZGRyZXNzGAEgASgJUgdhZGRyZXNz');
+final $typed_data.Uint8List addressRequestDescriptor = $convert.base64Decode('Cg5BZGRyZXNzUmVxdWVzdBIYCgdhZGRyZXNzGAEgASgJUgdhZGRyZXNzEhcKBHBpbmcYAiABKAlIAFIEcGluZ4gBAUIHCgVfcGluZw==');
 @$core.Deprecated('Use addressListRequestDescriptor instead')
 const AddressListRequest$json = const {
   '1': 'AddressListRequest',
