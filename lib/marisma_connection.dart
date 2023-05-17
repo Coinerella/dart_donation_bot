@@ -50,13 +50,15 @@ void subscribeToDonationAddress({bool retry = false}) async {
   final addressStatusStream = StreamController<AddressRequest>();
   StreamSubscription<dynamic>? subscription; // Declare a subscription variable
 
-  void handleStreamData(AddressStatusStreamReply _) async {
-    console.log(_.toString());
-    await handleUtxos(
-      await _marisma.getAddressUtxoList(
-        AddressListRequest()..address = donationAddress,
-      ),
-    );
+  void handleStreamData(AddressStatusStreamReply reply) async {
+    if (reply.pong.isEmpty) {
+      //ignore pong events
+      await handleUtxos(
+        await _marisma.getAddressUtxoList(
+          AddressListRequest()..address = donationAddress,
+        ),
+      );
+    }
   }
 
   void handleStreamError(dynamic e) {
