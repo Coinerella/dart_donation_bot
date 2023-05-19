@@ -70,14 +70,17 @@ class MarismaConnection {
 
         if (hiveResult != null) {
           _console.log('input is a (former) known utxo');
+
+          final asMap = jsonDecode(hiveResult);
           knownVIN = true;
-          inValue += hiveResult["value"] ?? 0;
-          if (hiveResult["tx_pos"] == e["vout"]) {
+          inValue += asMap["value"] ?? 0;
+          if (asMap["tx_pos"] == e["vout"]) {
             txPosIdentical = true;
           }
         }
       },
     );
+    //TODO event kommt nicht ..
 
     if (knownVIN == true) {
       //check for mint tx marker (first vout is value 0 and nonstandard)
@@ -169,7 +172,9 @@ class MarismaConnection {
         //ignore pong events
         await handleUtxos(
           await _marisma.getAddressUtxoList(
-            AddressListRequest()..address = _donationAddress,
+            AddressListRequest()
+              ..address = _donationAddress
+              ..minimumHeight = -1,
           ),
         );
       }

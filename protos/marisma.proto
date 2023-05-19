@@ -52,7 +52,7 @@ message AddressRequest {
 
 message AddressListRequest {
   string address = 1;
-  optional uint32 minimum_height = 2;
+  optional int32 minimum_height = 2;
   optional bool ascending = 3;
 }
 

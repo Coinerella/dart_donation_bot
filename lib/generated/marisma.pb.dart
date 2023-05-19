@@ -380,7 +380,7 @@ class AddressRequest extends $pb.GeneratedMessage {
 class AddressListRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AddressListRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'marisma'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'minimumHeight', $pb.PbFieldType.OU3)
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'minimumHeight', $pb.PbFieldType.O3)
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ascending')
     ..hasRequiredFields = false
   ;
@@ -436,7 +436,7 @@ class AddressListRequest extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.int get minimumHeight => $_getIZ(1);
   @$pb.TagNumber(2)
-  set minimumHeight($core.int v) { $_setUnsignedInt32(1, v); }
+  set minimumHeight($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasMinimumHeight() => $_has(1);
   @$pb.TagNumber(2)

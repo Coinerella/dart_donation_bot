@@ -96,7 +96,7 @@ const AddressListRequest$json = const {
   '1': 'AddressListRequest',
   '2': const [
     const {'1': 'address', '3': 1, '4': 1, '5': 9, '10': 'address'},
-    const {'1': 'minimum_height', '3': 2, '4': 1, '5': 13, '9': 0, '10': 'minimumHeight', '17': true},
+    const {'1': 'minimum_height', '3': 2, '4': 1, '5': 5, '9': 0, '10': 'minimumHeight', '17': true},
     const {'1': 'ascending', '3': 3, '4': 1, '5': 8, '9': 1, '10': 'ascending', '17': true},
   ],
   '8': const [
@@ -106,7 +106,7 @@ const AddressListRequest$json = const {
 };
 
 /// Descriptor for `AddressListRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List addressListRequestDescriptor = $convert.base64Decode('ChJBZGRyZXNzTGlzdFJlcXVlc3QSGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIqCg5taW5pbXVtX2hlaWdodBgCIAEoDUgAUg1taW5pbXVtSGVpZ2h0iAEBEiEKCWFzY2VuZGluZxgDIAEoCEgBUglhc2NlbmRpbmeIAQFCEQoPX21pbmltdW1faGVpZ2h0QgwKCl9hc2NlbmRpbmc=');
+final $typed_data.Uint8List addressListRequestDescriptor = $convert.base64Decode('ChJBZGRyZXNzTGlzdFJlcXVlc3QSGAoHYWRkcmVzcxgBIAEoCVIHYWRkcmVzcxIqCg5taW5pbXVtX2hlaWdodBgCIAEoBUgAUg1taW5pbXVtSGVpZ2h0iAEBEiEKCWFzY2VuZGluZxgDIAEoCEgBUglhc2NlbmRpbmeIAQFCEQoPX21pbmltdW1faGVpZ2h0QgwKCl9hc2NlbmRpbmc=');
 @$core.Deprecated('Use addressBalanceReplyDescriptor instead')
 const AddressBalanceReply$json = const {
   '1': 'AddressBalanceReply',
