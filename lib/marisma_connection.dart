@@ -65,8 +65,8 @@ class MarismaConnection {
 
     tx["vin"].forEach(
       (e) {
-        _console.log('tx has vin ${e["txid"]}');
-        var hiveResult = _hiveBox.get(e["txid"]);
+        _console.log('tx has vin ${e["txid"]} at ${e["vout"]}');
+        var hiveResult = _hiveBox.get('${e["txid"]}${e["vout"]}');
 
         if (hiveResult != null) {
           _console.log('input is a (former) known utxo');
@@ -80,7 +80,6 @@ class MarismaConnection {
         }
       },
     );
-    //TODO event kommt nicht ..
 
     if (knownVIN == true) {
       //check for mint tx marker (first vout is value 0 and nonstandard)
@@ -135,11 +134,12 @@ class MarismaConnection {
     for (final tx in utxoReply.utxos) {
       final decoded = jsonDecode(tx);
       final hash = decoded["txid"];
+      final txPos = decoded["vout"];
 
-      if (_hiveBox.get(hash) == null) {
+      if (_hiveBox.get('$hash$txPos') == null) {
         _console.log("Writing unknown utxo $hash");
         //write to hive
-        await _hiveBox.put(hash, tx);
+        await _hiveBox.put('$hash$txPos', tx);
 
         //request tx details from marisma
         await handleTx(
