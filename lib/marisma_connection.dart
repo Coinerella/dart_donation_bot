@@ -134,10 +134,10 @@ class MarismaConnection {
     for (final tx in utxoReply.utxos) {
       final decoded = jsonDecode(tx);
       final hash = decoded["txid"];
-      final txPos = decoded["vout"];
+      final txPos = decoded["tx_pos"];
 
       if (_hiveBox.get('$hash$txPos') == null) {
-        _console.log("Writing unknown utxo $hash");
+        _console.log("Writing unknown utxo $hash at $txPos");
         //write to hive
         await _hiveBox.put('$hash$txPos', tx);
 
@@ -174,6 +174,7 @@ class MarismaConnection {
           await _marisma.getAddressUtxoList(
             AddressListRequest()
               ..address = _donationAddress
+              ..ascending = true
               ..minimumHeight = -1,
           ),
         );
