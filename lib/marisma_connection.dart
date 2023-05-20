@@ -122,7 +122,7 @@ class MarismaConnection {
       discord.sendDonationMessage(roundDouble(outValue, 6));
     } else if (mintMarkerFound == true) {
       //discord: we have a mint
-      double mint = outValue - (inValue / 1000000);
+      double mint = outValue - inValue;
       _console.log('$outValue, $inValue');
       _console.log('mint = $mint');
 

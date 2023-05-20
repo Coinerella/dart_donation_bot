@@ -18,16 +18,20 @@
   // hiveBox.delete(
   //     '44ab092b4e1fe2c6257885292920339640b6256dd30d42efef48ee0941fd37d4');
 
-  // test to find mint
-  //   hiveBox.put(
-  //       '3137b4470d423a010c4ce1589045b03c070f3ae89de479a85a2539ef9a9b8495', {
-  //     "tx_hash":
-  //         "3137b4470d423a010c4ce1589045b03c070f3ae89de479a85a2539ef9a9b8495",
-  //     "height": 495282,
-  //     "value": 4999980000
-  //   });
-  //   hiveBox.delete(
-  //       '68ead34c48b7d06906cb1f4a68457f412e6778a6c3b6bc3813753b9f8362cebe');
+    // // test to find mint
+    // await _hiveBox.put(
+    //   '86b619428f7da832ed1f34a70977d0e1c29225251726d62474a2272a1f3335257',
+    //   jsonEncode({
+    //     "txid":
+    //         "86b619428f7da832ed1f34a70977d0e1c29225251726d62474a2272a1f333525",
+    //     "tx_pos": 7,
+    //     "value": 5000.0,
+    //     "block": 673146
+    //   }),
+    // );
+    // await _hiveBox.delete(
+    //   '69d730dfd81b98d5736b6ef8f3becd6150f6912fdb3ee30d4fc21a29f47710e02',
+    // );
 
   //another test to find mint
   // hiveBox.delete(
