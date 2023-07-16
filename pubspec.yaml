@@ -11,6 +11,6 @@ dev_dependencies:
   test: ^1.16.0
 dependencies: 
   color_logger: ^1.0.2
-  grpc: ^3.2.2
+  grpc: ^3.2.3
   hive: ^2.2.1 
   nyxx: ^4.0.0
