@@ -40,6 +40,10 @@ class MarismaConnection {
           credentials: useSSL
               ? ChannelCredentials.secure()
               : ChannelCredentials.insecure(),
+          keepAlive: ClientKeepAliveOptions(
+            pingInterval: Duration(seconds: 90),
+            permitWithoutCalls: true,
+          ),
         ),
       ),
     );

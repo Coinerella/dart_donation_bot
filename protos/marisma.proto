@@ -18,6 +18,8 @@ service Marisma {
   rpc AddressUtxosStream(stream AddressListRequest) returns (stream AddressUtxosStreamReply) {}  //bi-directional streaming
 }
 
+//TODO add ping/pong
+
 message EmptyRequest {
 }
 
@@ -47,12 +49,11 @@ message BroadCastTransactionReply {
 
 message AddressRequest {
   string address = 1;
-  optional string ping = 2;
 }
 
 message AddressListRequest {
   string address = 1;
-  optional int32 minimum_height = 2;
+  optional uint32 minimum_height = 2;
   optional bool ascending = 3;
 }
 
@@ -103,26 +104,22 @@ message BlockHashStreamReply {
   string hash = 1;
   uint32 height = 2;
   optional string rpc_error = 3;
-  optional string pong = 4;
 }
 
 message AddressStatusStreamReply {
   string address = 1;
   string status = 2;
   optional string rpc_error = 3;
-  optional string pong = 4;
 }
 
 message AddressScanStreamReply {
   string address = 1;
   bool is_known = 2;
   optional string rpc_error = 3;
-  //NOTE: no pong here, as we don't want the scan to last forever
 }
 
 message AddressUtxosStreamReply {
   string address = 1;
   repeated string utxos = 2;
   optional string rpc_error = 3;
-  //NOTE: no pong here, as we don't want the utxo stream to last forever
 }
