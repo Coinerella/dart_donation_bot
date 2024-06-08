@@ -3,21 +3,24 @@ import 'dart:math';
 
 import 'package:nyxx/nyxx.dart';
 
-late INyxxWebsocket bot;
+late NyxxGateway client;
 Map<String, String> env = Platform.environment;
-final channelId = env['DISCORD_CHANNEL_ID'];
+final channelId = Snowflake(int.parse(env['DISCORD_CHANNEL_ID']!));
 
 void init(String discordToken) async {
-  bot = NyxxFactory.createNyxxWebsocket(
+  client = await Nyxx.connectGateway(
     discordToken,
     GatewayIntents.allUnprivileged,
-  )
-    ..registerPlugin(Logging())
-    ..registerPlugin(CliIntegration())
-    ..registerPlugin(IgnoreExceptions())
-    ..connect();
+    options: GatewayClientOptions(
+      plugins: [
+        logging,
+        cliIntegration,
+        ignoreExceptions,
+      ],
+    ),
+  );
 
-  bot.eventsWs.onReady.listen(
+  client.onReady.listen(
     (e) async {
       print("Ready!");
     },
@@ -47,13 +50,11 @@ void sendMintMessage(double amount) {
   sendMessage(mintMessages[Random().nextInt(mintMessages.length)]);
 }
 
-void sendMessage(String text) {
+void sendMessage(String text) async {
   if (env['SILENT_OPERATION'] == "true") return;
-
-  bot.httpEndpoints.sendMessage(
-    Snowflake(channelId),
-    MessageBuilder.content(
-      text,
+  await (client.channels[channelId] as PartialTextChannel).sendMessage(
+    MessageBuilder(
+      content: text,
     ),
   );
 }
