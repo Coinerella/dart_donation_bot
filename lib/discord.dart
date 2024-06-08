@@ -36,6 +36,8 @@ void sendDonationMessage(double amount) {
 }
 
 void sendMintMessage(double amount) {
+  if (env['SEND_MINT_MESSAGES'] != "true") return;
+
   List mintMessages = [
     'The Peercoin Foundation has just minted $amount Peercoin!\nNice! Wanna know about the Foundation? https://ppc.lol/fndtn',
     'Minting is fun. So much fun that the Foundation just minted $amount Peercoin!\nWanna know about the Foundation? https://ppc.lol/fndtn',

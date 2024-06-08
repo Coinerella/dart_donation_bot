@@ -13,6 +13,7 @@ void main(List<String> arguments) async {
     "DONATION_ADDRESS",
     "MARISMA_SERVER_HOST",
     "MARISMA_SERVER_PORT",
+    "SEND_MINT_MESSAGES",
   ];
 
   for (var requiredEnv in requiredEnvs) {

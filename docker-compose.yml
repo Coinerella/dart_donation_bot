@@ -1,4 +1,3 @@
-version: '3.1'
 services:
   dart_donation_bot:
     build:
@@ -7,14 +6,8 @@ services:
     container_name: dart_donation_bot
     volumes:
       - ./hive:/app/hive
-    environment: 
-      - DISCORD_API_TOKEN=""
-      - DISCORD_CHANNEL_ID=""
-      - DONATION_ADDRESS=""
-      - MARISMA_SERVER_HOST=""
-      - MARISMA_SERVER_PORT=""
-      - USE_SSL=true
-      - SILENT_OPERATION=false
+    env_file:
+      - .env
     restart: always
     logging:
       driver: "json-file"
