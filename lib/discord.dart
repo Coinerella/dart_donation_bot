@@ -26,13 +26,13 @@ Future<void> init(String discordToken) async {
 
   client.onReady.listen(
     (e) async {
-      _console.log("Discord Ready!");
+      _console.log("Discord Ready!", status: LogStatus.success);
       completer.complete();
     },
   );
 
   await completer.future;
-  _console.log("Discord Initialization complete.");
+  _console.log("Discord Initialization complete.", status: LogStatus.success);
 }
 
 void sendDonationMessage(double amount) {

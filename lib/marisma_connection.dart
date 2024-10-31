@@ -25,7 +25,7 @@ class MarismaConnection {
   Timer? _pingTimer;
 
   Future<void> connect() async {
-    _console.log('connecting');
+    _console.log('connecting to marisma', status: LogStatus.info);
 
     //load env
     _env = Platform.environment;
@@ -54,7 +54,7 @@ class MarismaConnection {
   Future<void> handleTx(TxReply txReply) async {
     final tx = jsonDecode(txReply.tx);
     var txId = tx['txid'];
-    _console.log('txId: $txId');
+    _console.log('txId: $txId', status: LogStatus.info);
 
     bool knownVIN = false;
     bool mintMarkerFound = false;
@@ -65,11 +65,13 @@ class MarismaConnection {
 
     tx["vin"].forEach(
       (e) {
-        _console.log('tx has vin ${e["txid"]} at ${e["vout"]}');
+        _console.log('tx has vin ${e["txid"]} at ${e["vout"]}',
+            status: LogStatus.info);
         var hiveResult = _hiveBox.get('${e["txid"]}${e["vout"]}');
 
         if (hiveResult != null) {
-          _console.log('input is a (former) known utxo');
+          _console.log('input is a (former) known utxo',
+              status: LogStatus.info);
 
           final asMap = jsonDecode(hiveResult);
           knownVIN = true;
@@ -85,7 +87,7 @@ class MarismaConnection {
       //check for mint tx marker (first vout is value 0 and nonstandard)
       if (tx["vout"][0]["value"] == 0 &&
           tx["vout"][0]["scriptPubKey"]["type"] == "nonstandard") {
-        _console.log('found mint marker');
+        _console.log('found mint marker', status: LogStatus.info);
         mintMarkerFound = true;
       } else {
         //check if its a change tx
@@ -96,6 +98,7 @@ class MarismaConnection {
               if (txPosIdentical == true) {
                 _console.log(
                   'found donationAddress in VOUTs of a tx where we know one of the VINs == change',
+                  status: LogStatus.info,
                 );
 
                 changeFound = true;
@@ -118,13 +121,13 @@ class MarismaConnection {
 
     if (changeFound == false && mintMarkerFound == false) {
       //discord: we have a donation
-      _console.log('donation = $outValue');
+      _console.log('donation = $outValue', status: LogStatus.info);
       discord.sendDonationMessage(roundDouble(outValue, 6));
     } else if (mintMarkerFound == true) {
       //discord: we have a mint
       double mint = outValue - inValue;
       _console.log('$outValue, $inValue');
-      _console.log('mint = $mint');
+      _console.log('mint = $mint', status: LogStatus.info);
 
       discord.sendMintMessage(roundDouble(mint, 6));
     }
@@ -137,7 +140,8 @@ class MarismaConnection {
       final txPos = decoded["tx_pos"];
 
       if (_hiveBox.get('$hash$txPos') == null) {
-        _console.log("Writing unknown utxo $hash at $txPos");
+        _console.log("Writing unknown utxo $hash at $txPos",
+            status: LogStatus.info);
         //write to hive
         await _hiveBox.put('$hash$txPos', tx);
 
@@ -157,7 +161,8 @@ class MarismaConnection {
   }
 
   void subscribeToDonationAddress({bool retry = false}) async {
-    _console.log('connecting to stream (retry: $retry)');
+    _console.log('connecting to stream (retry: $retry)',
+        status: LogStatus.info);
 
     if (retry == true) {
       await Future.delayed(Duration(seconds: 5));
@@ -215,7 +220,7 @@ class MarismaConnection {
               onDone: handleStreamDone,
             );
 
-    _console.log('connected to stream');
+    _console.log('connected to stream', status: LogStatus.success);
 
     //start ping timer
     _pingTimer = Timer.periodic(
