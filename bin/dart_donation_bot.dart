@@ -28,9 +28,9 @@ void main(List<String> arguments) async {
     env["LOCAL_TESTING"] == "true" ? 'hive' : '/app/hive/',
   );
 
+  //init discord
+  await discord.init(env["DISCORD_API_TOKEN"]!);
+
   //open MarismaConnection
   MarismaConnection();
-
-  //init discord
-  discord.init(env["DISCORD_API_TOKEN"]!);
 }

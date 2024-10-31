@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
@@ -7,7 +8,8 @@ late NyxxGateway client;
 Map<String, String> env = Platform.environment;
 final channelId = Snowflake(int.parse(env['DISCORD_CHANNEL_ID']!));
 
-void init(String discordToken) async {
+Future<void> init(String discordToken) async {
+  final Completer<void> completer = Completer<void>();
   client = await Nyxx.connectGateway(
     discordToken,
     GatewayIntents.allUnprivileged,
@@ -22,9 +24,13 @@ void init(String discordToken) async {
 
   client.onReady.listen(
     (e) async {
-      print("Ready!");
+      print("Discord Ready!");
+      completer.complete();
     },
   );
+
+  await completer.future;
+  print("Discord Initialization complete.");
 }
 
 void sendDonationMessage(double amount) {
