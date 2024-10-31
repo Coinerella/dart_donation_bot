@@ -2,11 +2,13 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:color_logger/color_logger.dart';
 import 'package:nyxx/nyxx.dart';
 
 late NyxxGateway client;
 Map<String, String> env = Platform.environment;
 final channelId = Snowflake(int.parse(env['DISCORD_CHANNEL_ID']!));
+final ColorLogger _console = ColorLogger();
 
 Future<void> init(String discordToken) async {
   final Completer<void> completer = Completer<void>();
@@ -24,13 +26,13 @@ Future<void> init(String discordToken) async {
 
   client.onReady.listen(
     (e) async {
-      print("Discord Ready!");
+      _console.log("Discord Ready!");
       completer.complete();
     },
   );
 
   await completer.future;
-  print("Discord Initialization complete.");
+  _console.log("Discord Initialization complete.");
 }
 
 void sendDonationMessage(double amount) {
